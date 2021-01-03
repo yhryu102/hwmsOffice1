@@ -33,9 +33,9 @@ class TbSmmAuthorInfo(models.Model):
 
 
 class TbSumUserInfo(models.Model):
-    user_sn = models.PositiveIntegerField(primary_key=True)
-    user_nm = models.CharField(max_length=60, blank=True, null=True)
-    user_id = models.CharField(max_length=20, blank=True, null=True)
+    user_sn = models.PositiveIntegerField(primary_key=True, verbose_name='사용자번호')
+    user_nm = models.CharField(max_length=60, blank=True, null=True, verbose_name='이름')
+    user_id = models.CharField(max_length=20, blank=True, null=True, verbose_name='직분')
     user_se = models.CharField(max_length=20, blank=True, null=True)
 
     # WORKAREA_ID = (
@@ -48,7 +48,7 @@ class TbSumUserInfo(models.Model):
                                    choices=(
                                        ('7Q', 'Fumyhung'),
                                        ('2Q', 'Branch-#2'),
-                                   ))
+                                   ), verbose_name='소속병원')
 
     # WORKTY_ID = (
     #     ('DR', 'Doctor'),
@@ -77,9 +77,9 @@ class TbSumUserInfo(models.Model):
                               ))
 
     company_nm = models.CharField(max_length=60, blank=True, null=True)
-    telno = models.CharField(max_length=60, blank=True, null=True)
-    email = models.CharField(max_length=60, blank=True, null=True)
-    password = models.CharField(max_length=60, blank=True, null=True)
+    telno = models.CharField(max_length=60, blank=True, null=True, verbose_name='전화번호')
+    email = models.CharField(max_length=60, blank=True, null=True, verbose_name='이메일')
+    password = models.CharField(max_length=60, blank=True, null=True, verbose_name='패스워드')
     new_password = models.CharField(max_length=60, blank=True, null=True)
 
     STAGREE_ID = (
@@ -119,10 +119,10 @@ class TbSumUserInfo(models.Model):
     brthdy = models.DateField(blank=True, null=True)
     # photo = models.ImageField(null=True, blank=True, upload_to='%Y/%m/%d')
     frst_reg_ip = models.CharField(max_length=20)
-    frst_reg_dttm = models.DateTimeField()
+    frst_reg_dttm = models.DateTimeField(auto_now_add=True)
     frst_reg_id = models.CharField(max_length=20)
     last_upd_ip = models.CharField(max_length=20)
-    last_upd_dttm = models.DateTimeField()
+    last_upd_dttm = models.DateTimeField(auto_now_add=True)
     last_upd_id = models.CharField(max_length=20)
 
     class Meta:
