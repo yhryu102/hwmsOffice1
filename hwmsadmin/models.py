@@ -33,7 +33,7 @@ class TbSmmAuthorInfo(models.Model):
 
 
 class TbSumUserInfo(models.Model):
-    user_sn = models.PositiveIntegerField(primary_key=True, verbose_name='사용자번호')
+    # user_sn = models.PositiveIntegerField(primary_key=True, verbose_name='사용자번호')
     user_nm = models.CharField(max_length=60, blank=True, null=True, verbose_name='이름')
     user_id = models.CharField(max_length=20, blank=True, null=True, verbose_name='직분')
     user_se = models.CharField(max_length=20, blank=True, null=True)
@@ -78,9 +78,9 @@ class TbSumUserInfo(models.Model):
 
     company_nm = models.CharField(max_length=60, blank=True, null=True)
     telno = models.CharField(max_length=60, blank=True, null=True, verbose_name='전화번호')
-    email = models.CharField(max_length=60, blank=True, null=True, verbose_name='이메일')
-    password = models.CharField(max_length=60, blank=True, null=True, verbose_name='패스워드')
-    new_password = models.CharField(max_length=60, blank=True, null=True)
+    email = models.CharField(max_length=128, blank=True, null=True, verbose_name='이메일')
+    password = models.CharField(max_length=128, blank=True, null=True, verbose_name='패스워드')
+    new_password = models.CharField(max_length=128, blank=True, null=True)
 
     STAGREE_ID = (
         ('Y', 'Yes'),

@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
+from cstmng.views import index, RegisterView
 
 import adminactions.actions as actions
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', index),
+    path('register/', RegisterView.as_view()),
     path('adminactions/', include('adminactions.urls')),    # Graph
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -8,13 +8,15 @@ from .models import TbSumUserInfo, TbSmmAuthorInfo, Photo
 # Register your models here.
 
 class DisplayTbSumUserInfo(admin.ModelAdmin):
-    fields = ('user_sn', 'user_nm', 'user_ty', 'work_branch', 'telno', 'email', 'brthdy')
-    list_display = ('user_sn', 'user_nm', 'user_ty', 'work_branch', 'telno', 'email', 'brthdy')
+    # fields = ('user_sn', 'user_nm', 'user_ty', 'work_branch', 'telno', 'email', 'brthdy')
+    # list_display = ('user_sn', 'user_nm', 'user_ty', 'work_branch', 'telno', 'email', 'brthdy')
+    fields = ('user_nm', 'user_ty', 'work_branch', 'telno', 'email', 'brthdy')
+    list_display = ('user_nm', 'user_ty', 'work_branch', 'telno', 'email', 'brthdy')
     search_fields = ['user_nm']
     list_filter = ('work_branch', 'user_ty', ('brthdy', DateRangeFilter))
     ordering = ('user_nm', 'user_ty', 'frst_reg_dttm',)
 
-    # readonly_fields = ['user_sn', 'user_nm']
+    readonly_fields = ['user_nm', ]
 
 
 class DisplayTbSmmAuthorInfo(admin.ModelAdmin):
