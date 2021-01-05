@@ -16,12 +16,29 @@ class Rsvmng(models.Model):
                                 verbose_name='예약사업장')
 
     rsv_dt = models.DateField(verbose_name='예약일')
-    rsv_time = models.TimeField(verbose_name='예약시간')
     # 추가해야할 필드 : 요일 계산 함수에 의해 해당 요일 표기
+
+    RSV_TIME = (
+        ('10:30', '10:30'),
+        ('11:00', '11:00'),
+        ('11:30', '11:30'),
+        ('13:00', '13:00'),
+        ('13:30', '13:30'),
+        ('14:00', '14:00'),
+        ('14:30', '14:30'),
+        ('15:00', '15:00'),
+        ('15:30', '15:30'),
+        ('16:00', '16:00'),
+        ('16:30', '16:30'),
+        ('17:00', '17:00'),
+        ('17:30', '17:30'),
+    )
+    rsv_time = models.CharField(max_length=5, choices=RSV_TIME, blank=True, null=True, default='',
+                                  verbose_name='예약시간')
 
     CLINIC_ID = (
         ('초진', '초진'),
-        ('재진', '초진'),
+        ('재진', '재진'),
     )
     clnic_cd = models.CharField(max_length=16, choices=CLINIC_ID, blank=True, null=True, default='재진',
                                 verbose_name='초진재진구분')

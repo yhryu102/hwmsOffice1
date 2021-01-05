@@ -33,9 +33,10 @@ class TbSmmAuthorInfo(models.Model):
 
 
 class TbSumUserInfo(models.Model):
+    user_sn = models.AutoField(primary_key=True)
     # user_sn = models.PositiveIntegerField(primary_key=True, verbose_name='사용자번호')
-    user_nm = models.CharField(max_length=60, blank=True, null=True, verbose_name='이름')
-    user_id = models.CharField(max_length=20, blank=True, null=True, verbose_name='직분')
+    user_nm = models.CharField(max_length=60, verbose_name='이름')
+    user_id = models.CharField(max_length=20, verbose_name='사용자아이디')
     user_se = models.CharField(max_length=20, blank=True, null=True)
 
     # WORKAREA_ID = (
@@ -48,7 +49,8 @@ class TbSumUserInfo(models.Model):
                                    choices=(
                                        ('7Q', 'Fumyhung'),
                                        ('2Q', 'Branch-#2'),
-                                   ), verbose_name='소속병원')
+                                       ('TVST','TVStorm Vietnam')
+                                   ), verbose_name='소속')
 
     # WORKTY_ID = (
     #     ('DR', 'Doctor'),
@@ -57,12 +59,13 @@ class TbSumUserInfo(models.Model):
     #     ('CD', 'Coordinator'),
     # )
     # user_ty = models.CharField(max_length=15, choices=WORKTY_ID, blank=True, null=True, defalut='CD')
-    user_ty = models.CharField(max_length=15, blank=True, null=True,
+    user_ty = models.CharField(max_length=15, blank=True, null=True, verbose_name='직분',
                                choices=(
                                    ('DR', 'Doctor'),
                                    ('NU', 'Nulse'),
                                    ('SC', 'Skincare'),
                                    ('CD', 'Coordinator'),
+                                   ('ADM', 'Sys-Admin'),
                                ))
 
     # GENDER_ID = (
@@ -70,7 +73,7 @@ class TbSumUserInfo(models.Model):
     #     ('Female', 'Female'),
     # )
     # gender = models.CharField(max_length=1, choices=GENDER_ID, blank=True, null=True, defalut='Female')
-    gender = models.CharField(max_length=1, blank=True, null=True,
+    gender = models.CharField(max_length=1, blank=True, null=True, verbose_name='성별',
                               choices=(
                                   ('M', 'Male'),
                                   ('F', 'Female'),

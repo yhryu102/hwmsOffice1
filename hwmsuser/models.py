@@ -4,16 +4,15 @@ from django.db import models
 # Create your models here.
 
 
-class CTbSumUserInfo(models.Model):
-    # user_sn = models.AutoField(primary_key=True)
+class Hwmsuser(models.Model):
+    user_sn = models.AutoField(primary_key=True)
     email = models.CharField(max_length=128, blank=True, null=True, verbose_name='이메일')
     password = models.CharField(max_length=128, blank=True, null=True, verbose_name='패스워드')
-    user_se = models.CharField(max_length=20, verbose_name='등급',
+    user_se = models.CharField(max_length=8, verbose_name='사용자구분',
         choices=(
             ('admin', 'admin'),
             ('user', 'user')
         ))
-    # new_password = models.CharField(max_length=128, blank=True, null=True)
 
     frst_reg_dttm = models.DateTimeField(auto_now_add=True, verbose_name='등록날짜')
 
@@ -22,11 +21,12 @@ class CTbSumUserInfo(models.Model):
         return self.email
 
     class Meta:
-        db_table = 'tb_sum_user_info'
+        db_table = 'hwmsuser'
         verbose_name = '사용자'
         verbose_name_plural = '사용자'
 
 
+'''   나중에 사용할 수 있을 듯 하여 남겨 놓음.   
 class Cstmng(models.Model):
     chart_no = models.CharField(primary_key=True, max_length=10, verbose_name='차트번호')
     # cst_nm = models.CharField(primary_key=True, max_length=60, verbose_name='고객명')
@@ -88,3 +88,4 @@ class Cstmng(models.Model):
         db_table = 'cstmng'
         verbose_name = '고객관리'
         verbose_name_plural = '고객관리'
+'''
