@@ -2,15 +2,15 @@ from django.db import models
 
 # Create your models here.
 
-class Goodsmng(models.Model):
+class GoodsModel(models.Model):
     # goods_cd = models.CharField(max_length=6, verbose_name='상품코드')
-    goods_cd = models.CharField(primary_key=True, max_length=6, verbose_name='상품코드')
+    goods_cd = models.CharField(primary_key=True, max_length=10, verbose_name='상품코드')
     goods_nm = models.CharField(max_length=100, verbose_name='상품명')
-    sub_clas_cd = models.CharField(max_length=6, verbose_name='대분류코드')
+    sub_clas_cd = models.CharField(max_length=10, verbose_name='대분류코드')
     sub_clas_nm = models.CharField(max_length=60, verbose_name='대분류명')
-    maj_clas_cd = models.CharField(max_length=6, verbose_name='범주코드')
+    maj_clas_cd = models.CharField(max_length=10, verbose_name='범주코드')
     maj_clas_nm = models.CharField(max_length=60, verbose_name='범주명')
-    cat_cd = models.CharField(max_length=6, verbose_name='카테고리코드')
+    cat_cd = models.CharField(max_length=10, verbose_name='카테고리코드')
     cat_nm = models.CharField(max_length=60, verbose_name='카테고리명')
 
 
@@ -35,7 +35,6 @@ class Goodsmng(models.Model):
     tera_at = models.CharField(max_length=1, choices=TERA_ID, blank=True, null=True, default='1', verbose_name='의사시술여부')
 
     tera_add_days = models.PositiveSmallIntegerField(verbose_name='시술추가일수')
-    # stock = models.IntegerField(verbose_name='재고')
     atpn_dsc = models.CharField(max_length=60, verbose_name='주의사항')
     inf_msg = models.CharField(max_length=60, verbose_name='안내메시지')
     sch_ltr_days = models.PositiveSmallIntegerField(verbose_name='이후안내예정일수')

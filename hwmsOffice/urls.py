@@ -18,6 +18,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 from hwmsuser.views import index, RegisterView, LoginView
+from goodsmng.views import GoodsList, GoodsCreate
+# from goodsmng.views import (
+#     GoodsList, GoodsCreate, GoodsDetail,
+#     GoodsListAPI, GoodsDetailAPI
+# )
 
 import adminactions.actions as actions
 
@@ -27,6 +32,11 @@ urlpatterns = [
     path('', index),
     path('register/', RegisterView.as_view()),
     path('login/', LoginView.as_view()),
+    path('goodsmng/', GoodsList.as_view()),
+    # path('goodsmng/<int:pk>/', ProductDetail.as_view()),
+    path('goodsmng/create/', GoodsCreate.as_view()),
+    # path('rsvmng/', RsvList.as_view()),
+    # path('rsvmng/create/', RsvCreate.as_view()),
     path('adminactions/', include('adminactions.urls')),    # Graph
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
