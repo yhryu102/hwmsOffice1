@@ -33,8 +33,8 @@ class TbSmmAuthorInfo(models.Model):
 
 
 class TbSumUserInfo(models.Model):
-    user_sn = models.AutoField(primary_key=True)
-    # user_sn = models.PositiveIntegerField(primary_key=True, verbose_name='사용자번호')
+    # user_sn = models.AutoField(primary_key=True)
+    user_sn = models.PositiveIntegerField(primary_key=True, verbose_name='사용자번호')
     user_nm = models.CharField(max_length=60, verbose_name='이름')
     user_id = models.CharField(max_length=20, verbose_name='사용자아이디')
     user_se = models.CharField(max_length=20, blank=True, null=True)
@@ -134,7 +134,7 @@ class TbSumUserInfo(models.Model):
         verbose_name = '직원명단'
 
     def __str__(self):
-        return 'name: %s, title: %s' % (self.user_nm, self.user_ty)
+        return 'name: %d, title: %s' % (self.user_sn, self.user_nm)
 
 
 class Photo(models.Model):

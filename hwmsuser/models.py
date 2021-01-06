@@ -5,7 +5,8 @@ from django.db import models
 
 
 class Hwmsuser(models.Model):
-    user_sn = models.AutoField(primary_key=True)
+    # user_sn = models.AutoField(primary_key=True)
+    user_sn = models.PositiveIntegerField(primary_key=True, verbose_name='사용자번호')
     email = models.CharField(max_length=128, blank=True, null=True, verbose_name='이메일')
     password = models.CharField(max_length=128, blank=True, null=True, verbose_name='패스워드')
     user_se = models.CharField(max_length=8, verbose_name='사용자구분',
