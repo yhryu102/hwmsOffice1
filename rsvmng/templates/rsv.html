@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% block contents %}
+<div class="row mt-5">
+  <div class="col-12">
+    <table class="table table-light">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">예약날짜</th>
+          <th scope="col">예약시간</th>
+          <th scope="col">고객희망 시술내용</th>
+          <th scope="col">고객희망 대분류</th>
+          <th scope="col">등록날짜</th>
+        </tr>
+      </thead>
+      <tbody class="text-dark">
+        {% for rsvmng in rsv_list %}
+        <tr>
+          <th scope="row">{{ rsvmng.rsv_sn }}</th>
+          <th>{{ rsvmng.rsv_dt|date:'Y-m-d' }}</th>
+          <th>{{ rsvmng.rsv_time }}</th>
+          <th>{{ rsvmng.ds_srop_desc }}</th>
+          <th>{{ rsvmng.ds_class }}</th>
+{#        <th>{{ rsvmng.quantity|intcomma }} 개</th> #}
+          <th>{{ rsvmng.frst_reg_dttm|date:'Y-m-d H:i' }}</th>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

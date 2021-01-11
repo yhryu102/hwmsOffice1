@@ -31,24 +31,22 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
     'django.contrib.contenttypes',
     # 'grappelli.dashboard',
     # 'grappelli',
-    'adminactions',
-    'django.contrib.admin',
-    'django.contrib.auth',
     'django.contrib.sessions',
     'django.contrib.messages',
+
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    # 'django.contrib.contenttypes',
-    # 'django.contrib.staticfiles',
-
-    # 'rest_framework',
+    'rest_framework',
+    'adminactions',
 ]
 
 INSTALLED_APPS += [
-    'hwmsadmin',
+    # 'hwmsadmin',
     'hwmsuser',
     'goodsmng',
     'rsvmng',
@@ -59,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -70,7 +68,8 @@ ROOT_URLCONF = 'hwmsOffice.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS' : [],
+        # 'DIRS': [os.path.join(BASE_DIR, 'templates')],
         # 'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
