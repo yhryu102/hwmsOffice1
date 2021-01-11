@@ -30,7 +30,7 @@
         <li class="list-group-item">가격: {{ goodsmng.goods_amt|intcomma }} 원</li>
         <li class="list-group-item">등록날짜: {{ goodsmng.frst_reg_dttm|date:'Y-m-d H:i' }}</li>
 {#        <li class="list-group-item">재고: {{ goods.stock|intcomma }} 개</li>#}
-        <li class="list-group-item">{{ goodsmng.adv_dtl|safe }}</li>
+        <li class="list-group-item">{{ goodsmng.adv_dtl_char|safe }}</li>
       </ul>
     </div>
   </div>

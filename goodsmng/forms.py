@@ -50,7 +50,7 @@ class RegisterForm(forms.Form):
             'required': '상품설명을 입력해주세요.'
         }, label='상품가격'
     )
-    adv_dtl = forms.CharField(
+    adv_dtl_char = forms.CharField(
         error_messages={
             'required': '상품설영을 입력해주세요.'
         }, label='상품설명'
@@ -76,9 +76,9 @@ class RegisterForm(forms.Form):
         sub_clas_nm = cleaned_data.get('sub_clas_nm')
         goods_at = cleaned_data.get('goods_at')
         goods_amt = cleaned_data.get('goods_amt')
-        adv_dtl = cleaned_data.get('adv_dtl')
+        adv_dtl_char = cleaned_data.get('adv_dtl_char')
 
-        if not (goods_cd and goods_nm and maj_clas_cd and maj_clas_nm and sub_clas_cd and sub_clas_nm and goods_at and goods_amt and adv_dtl):
+        if not (goods_cd and goods_nm and maj_clas_cd and maj_clas_nm and sub_clas_cd and sub_clas_nm and goods_at and goods_amt and adv_dtl_char):
             self.add_error('goods_cd', '상품코드값이 없습니다')
             self.add_error('goods_nm', '상품명이 없습니다')
             self.add_error('maj_clas_cd', '범주코드값이 없습니다')

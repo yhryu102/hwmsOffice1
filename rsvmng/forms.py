@@ -1,7 +1,7 @@
 from django import forms
 from .models import Rsvmng
 from goodsmng.models import GoodsModel
-from hwmsuser.models import Hwmsuser
+from cstmng.models import CstModel
 from django.db import transaction
 
 
@@ -25,10 +25,10 @@ class RegisterForm(forms.Form):
             'required': '시간을 입력해주세요.'
         }, label='시간'
     )
-    ds_srop_desc = forms.CharField(
+    goods_nm = forms.CharField(
         error_messages={
-            'required': '고객희망 시술내용을 입력해주세요.'
-        }, label='희망시술'
+            'required': '고객희망 상품명을 입력해주세요.'
+        }, label='희망상품명'
     )
     ds_class = forms.CharField(
         error_messages={
@@ -49,14 +49,14 @@ class RegisterForm(forms.Form):
 
     def clean(self):
         cleaned_data = super().clean()
-        rsv_sn = cleaned_data.get('rsv_sn')
+        # rsv_sn = cleaned_data.get('rsv_sn')
         rsv_dt = cleaned_data.get('rsv_dt')
         rsv_time = cleaned_data.get('rsv_time')
-        ds_srop_desc = cleaned_data.get('ds_srop_desc')
+        goods_nm = cleaned_data.get('goods_nm')
         ds_class = cleaned_data.get('ds_class')
 
-        if not (ds_srop_desc and ds_class and rsv_dt and rsv_time):
-            self.add_error('ds_srop_desc', '값이 없습니다')
+        if not (goods_nm and ds_class and rsv_dt and rsv_time):
+            self.add_error('goods_nm', '값이 없습니다')
             self.add_error('ds_class', '값이 없습니다')
             self.add_error('rsv_dt', '값이 없습니다')
             self.add_error('rsv_time', '값이 없습니다')

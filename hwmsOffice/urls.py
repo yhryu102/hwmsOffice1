@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from hwmsuser.views import index, logout, RegisterView, LoginView
+from cstmng.views import index, logout, RegisterView, LoginView
 from django.conf import settings
 from django.conf.urls.static import static
 

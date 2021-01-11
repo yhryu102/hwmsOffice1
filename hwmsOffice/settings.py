@@ -47,7 +47,7 @@ INSTALLED_APPS = [
 
 INSTALLED_APPS += [
     # 'hwmsadmin',
-    'hwmsuser',
+    'cstmng',
     'goodsmng',
     'rsvmng',
     'rangefilter',

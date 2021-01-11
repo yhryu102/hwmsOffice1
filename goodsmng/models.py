@@ -44,7 +44,7 @@ class GoodsModel(models.Model):
     flor_nm = models.CharField(max_length=60, verbose_name='층명')   # 코드테이블에서 읽어 리스트형으로 변환할 것.
     bed_nm = models.CharField(max_length=60, verbose_name='베드명')   # 코드테이블에서 읽어 리스트형으로 변환할 것.
 
-    adv_dtl = models.TextField(verbose_name='상품광고 설명')
+    adv_dtl_char = models.TextField(verbose_name='상품광고 설명')
     frst_reg_dttm = models.DateTimeField(auto_now_add=True, verbose_name='등록날짜')
 
 
