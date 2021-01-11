@@ -14,15 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.urls import path, include
+from hwmsuser.views import index, logout, RegisterView, LoginView
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import path, include
-from hwmsuser.views import index, RegisterView, LoginView
-from goodsmng.views import GoodsList, GoodsCreate
+
+from goodsmng.views import GoodsList, GoodsCreate, GoodsDetail
 # from goodsmng.views import (
 #     GoodsList, GoodsCreate, GoodsDetail,
 #     GoodsListAPI, GoodsDetailAPI
 # )
+from rsvmng.views import RsvCreate, RsvList
 
 import adminactions.actions as actions
 
@@ -32,15 +34,17 @@ urlpatterns = [
     path('', index),
     path('register/', RegisterView.as_view()),
     path('login/', LoginView.as_view()),
+    path('logout/', logout),
     path('goodsmng/', GoodsList.as_view()),
-    # path('goodsmng/<int:pk>/', ProductDetail.as_view()),
+    path('goodsmng/<int:pk>/', GoodsDetail.as_view()),
     path('goodsmng/create/', GoodsCreate.as_view()),
-    # path('rsvmng/', RsvList.as_view()),
-    # path('rsvmng/create/', RsvCreate.as_view()),
+    path('rsvmng/', RsvList.as_view()),
+    path('rsvmng/create/', RsvCreate.as_view()),
+
+    # path('api/rsvmng/', RsvListAPI.as_view()),
     path('adminactions/', include('adminactions.urls')),    # Graph
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # import adminactions.actions as actions
-actions.add_to_site(admin.site)                              # Graph
-
+actions.add_to_site(admin.site)

@@ -47,8 +47,13 @@ class RegisterForm(forms.Form):
     )
     goods_amt = forms.IntegerField(
         error_messages={
-            'required': '상품가격을 입력해주세요.'
+            'required': '상품설명을 입력해주세요.'
         }, label='상품가격'
+    )
+    adv_dtl_char = forms.CharField(
+        error_messages={
+            'required': '상품설영을 입력해주세요.'
+        }, label='상품설명'
     )
     # description = forms.CharField(
     #     error_messages={
@@ -71,8 +76,9 @@ class RegisterForm(forms.Form):
         sub_clas_nm = cleaned_data.get('sub_clas_nm')
         goods_at = cleaned_data.get('goods_at')
         goods_amt = cleaned_data.get('goods_amt')
+        adv_dtl_char = cleaned_data.get('adv_dtl_char')
 
-        if not (goods_cd and goods_nm and maj_clas_cd and maj_clas_nm and sub_clas_cd and sub_clas_nm and goods_at and goods_amt):
+        if not (goods_cd and goods_nm and maj_clas_cd and maj_clas_nm and sub_clas_cd and sub_clas_nm and goods_at and goods_amt and adv_dtl_char):
             self.add_error('goods_cd', '상품코드값이 없습니다')
             self.add_error('goods_nm', '상품명이 없습니다')
             self.add_error('maj_clas_cd', '범주코드값이 없습니다')
@@ -80,16 +86,16 @@ class RegisterForm(forms.Form):
             self.add_error('sub_clas_cd', '대분류코드값이 없습니다')
             self.add_error('sub_clas_nm', '대분류명이 없습니다')
             self.add_error('goods_at', '이벤트구분값이 없습니다')
-            self.add_error('goods_amt', '상품가격이 없습니다')
-        else:
-            goods = GoodsModel(
-                goods_cd=goods_cd,
-                goods_nm=goods_nm,
-                maj_clas_cd=maj_clas_cd,
-                maj_clas_nm=maj_clas_nm,
-                sub_clas_cd=sub_clas_cd,
-                sub_clas_nm=sub_clas_nm,
-                goods_at=goods_at,
-                goods_amt=goods_amt
-            )
-            goods.save()
+            self.add_error('goods_amt', '////상품가격이 없습니다')
+        # else:
+        #     goods = GoodsModel(
+        #         goods_cd=goods_cd,
+        #         goods_nm=goods_nm,
+        #         maj_clas_cd=maj_clas_cd,
+        #         maj_clas_nm=maj_clas_nm,
+        #         sub_clas_cd=sub_clas_cd,
+        #         sub_clas_nm=sub_clas_nm,
+        #         goods_at=goods_at,
+        #         goods_amt=goods_amt
+        #     )
+
