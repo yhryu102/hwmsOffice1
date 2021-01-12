@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 
 
-class Hwmsuser(models.Model):
+class CstModel(models.Model):
     # user_sn = models.AutoField(primary_key=True)
     user_sn = models.PositiveIntegerField(primary_key=True, verbose_name='사용자번호')
     email = models.CharField(max_length=128, verbose_name='이메일')

@@ -30,7 +30,19 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+BATON = {
+    'SITE_HEDER': 'HWMS 백오피스',
+    'SITE_TITLE': 'HWMS 백오피스',
+    'INDEX_TITLE': 'HWMS 관리자페이지',
+    # 'SUPPORT_HREF': 'https://tvstormvietnam.vn',
+    'SUPPORT_HREF': 'mailto:yhryu102@gmail.com',
+    'COPYRIGHT': 'copyright © 2020 TVStorm Vietnam Co., Ltd.',
+    'POWERED_BY': '<a href="http://auraclinic.vn">AURA Clinic</a>',
+    'MENU_TITLE': 'AURA Clnic'
+}
+
 INSTALLED_APPS = [
+    'baton',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,13 +55,14 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'rest_framework',
     'adminactions',
+
+    'baton.autodiscover',
 ]
 
 INSTALLED_APPS += [
-    # 'hwmsadmin',
-    'hwmsuser',
-    'goodsmng',
-    'rsvmng',
+    'cstmng.apps.CstmngConfig',
+    'goodsmng.apps.GoodsConfig',
+    'rsvmng.apps.RsvmngConfig',
     'rangefilter',
 ]
 

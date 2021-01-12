@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 
 
-class HwmsuserConfig(AppConfig):
-    name = 'hwmsuser'
+class CstmngConfig(AppConfig):
+    name = 'cstmng'
+    verbose_name = '일반사용자'

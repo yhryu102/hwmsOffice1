@@ -1,7 +1,7 @@
 from django import forms
 from .models import Rsvmng
 from goodsmng.models import GoodsModel
-from hwmsuser.models import Hwmsuser
+from cstmng.models import CstModel
 from django.db import transaction
 
 

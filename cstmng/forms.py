@@ -1,7 +1,7 @@
 from django import forms
 # from django.contrib.auth.hashers import check_password, make_password
 from django.contrib.auth.hashers import check_password
-from .models import Hwmsuser
+from .models import CstModel
 
 class RegisterForm(forms.Form):
     email = forms.EmailField(

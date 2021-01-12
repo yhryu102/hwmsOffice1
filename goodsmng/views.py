@@ -5,7 +5,7 @@ from django.utils.decorators import method_decorator
 from rest_framework import generics
 from rest_framework import mixins
 #
-from hwmsuser.decorators import admin_required
+from cstmng.decorators import admin_required
 from .models import GoodsModel
 from .forms import RegisterForm
 from .serializers import GoodsSerializer

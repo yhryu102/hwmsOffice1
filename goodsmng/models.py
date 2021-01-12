@@ -4,8 +4,8 @@ from django.db import models
 
 class GoodsModel(models.Model):
     # goods_cd = models.CharField(max_length=6, verbose_name='상품코드')
-    # id = models.AutoField(primary_key=True)
     goods_cd = models.CharField(primary_key=True, max_length=10, verbose_name='상품코드')
+    # id = models.AutoField(primary_key=True)
     goods_nm = models.CharField(max_length=100, verbose_name='상품명')
     sub_clas_cd = models.CharField(max_length=10, verbose_name='대분류코드')
     sub_clas_nm = models.CharField(max_length=60, verbose_name='대분류명')
@@ -14,12 +14,12 @@ class GoodsModel(models.Model):
     cat_cd = models.CharField(max_length=10, verbose_name='카테고리코드')
     cat_nm = models.CharField(max_length=60, verbose_name='카테고리명')
 
-
     GOODS_ID = (
         ('1', '일반상품'),
         ('2', '이벤트상품'),
     )
-    goods_at = models.CharField(max_length=1, choices=GOODS_ID, blank=True, null=True, default='1', verbose_name='일반이벤트구분')
+    goods_at = models.CharField(max_length=1, choices=GOODS_ID, blank=True, null=True, default='1',
+                                verbose_name='일반이벤트구분')
 
     goods_amt = models.IntegerField(verbose_name='상품가격')
 
@@ -46,7 +46,6 @@ class GoodsModel(models.Model):
 
     adv_dtl_char = models.TextField(verbose_name='상품광고 설명')
     frst_reg_dttm = models.DateTimeField(auto_now_add=True, verbose_name='등록날짜')
-
 
     def __str__(self):
         return self.goods_nm

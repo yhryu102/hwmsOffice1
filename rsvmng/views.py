@@ -2,12 +2,12 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import FormView
 from django.views.generic import ListView
 from django.utils.decorators import method_decorator
-from hwmsuser.decorators import login_required
+from cstmng.decorators import login_required
 from django.db import transaction
 from .forms import RegisterForm
 from .models import Rsvmng
 from goodsmng.models import GoodsModel
-from hwmsuser.models import Hwmsuser
+from cstmng.models import CstModel
 
 # Create your views here.
 

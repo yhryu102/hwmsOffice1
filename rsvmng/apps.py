@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 
 
-class OrderConfig(AppConfig):
+class RsvmngConfig(AppConfig):
     name = 'rsvmng'
+    verbose_name = '예약'
