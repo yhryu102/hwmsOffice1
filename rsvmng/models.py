@@ -4,8 +4,9 @@ from django.db import models
 # Create your models here.
 
 class Rsvmng(models.Model):
-    # hwmsuser = models.ForeignKey('hwmsuser.Hwmsuser', on_delete=models.CASCADE, verbose_name='사용자')
+    # cst = models.ForeignKey('cst~~.Hwmsuser', on_delete=models.CASCADE, verbose_name='사용자')
 
+    user_sn = models.PositiveIntegerField(verbose_name='등록번호')
     rsv_sn = models.PositiveIntegerField(primary_key=True, verbose_name='예약번호')
     cst_nm = models.CharField(max_length=60, verbose_name='고객명')
     chart_no = models.CharField(max_length=10, verbose_name='차트번호')
@@ -38,6 +39,20 @@ class Rsvmng(models.Model):
         ('재진', '재진'),
     )
     clnic_cd = models.CharField(max_length=16, choices=CLNIC_ID, verbose_name='초/재진')
+
+    STT_CD = (
+        ('예약', '예약'),
+        ('접수', '접수'),
+        ('수납대기', '수납대기'),
+        ('시술중', '시술중'),
+        ('시술완료', '시술완료'),
+        ('수납완료', '수납완료'),
+        ('예약취소', '예약취소'),
+        ('미방문', '미방문'),
+    )
+    rsv_stt_cd = models.CharField(max_length=16, choices=STT_CD, blank=True, null=True, default='',
+                                  verbose_name='현재상태')
+
     frst_reg_dttm = models.DateTimeField(auto_now_add=True, verbose_name='주문날짜')
 
     def __str__(self):

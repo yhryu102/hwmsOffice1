@@ -3,10 +3,10 @@ from django.db import models
 # Create your models here.
 
 class GoodsModel(models.Model):
-    # goods_cd = models.CharField(max_length=6, verbose_name='상품코드')
-    goods_cd = models.CharField(primary_key=True, max_length=10, verbose_name='상품코드')
+    goods_cd = models.CharField(max_length=10, verbose_name='상품코드')
+    # goods_cd = models.CharField(primary_key=True, max_length=10, verbose_name='상품코드')
     # id = models.AutoField(primary_key=True)
-    goods_nm = models.CharField(max_length=100, verbose_name='상품명')
+    goods_nm = models.CharField(primary_key=True, max_length=100, verbose_name='상품명')
     sub_clas_cd = models.CharField(max_length=10, verbose_name='대분류코드')
     sub_clas_nm = models.CharField(max_length=60, verbose_name='대분류명')
     maj_clas_cd = models.CharField(max_length=10, verbose_name='범주코드')

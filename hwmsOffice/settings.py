@@ -38,7 +38,40 @@ BATON = {
     'SUPPORT_HREF': 'mailto:yhryu102@gmail.com',
     'COPYRIGHT': 'copyright © 2020 TVStorm Vietnam Co., Ltd.',
     'POWERED_BY': '<a href="http://auraclinic.vn">AURA Clinic</a>',
-    'MENU_TITLE': 'AURA Clnic'
+    'MENU_TITLE': 'AURA Clnic',
+    'MENU': (
+        { 'type': 'title', 'label': 'main' },
+        {
+            'type': 'app',
+            'name': 'cstmng',
+            'label': '고객',
+            'icon': 'fa fa-lock',
+            'models': (
+                {
+                    'name': 'cstmng',
+                    'label': '고객'
+                },
+            )
+        },
+        {
+            'type': 'free', 'label': '예약', 'default_open': True, 'children': [
+                { 'type': 'free', 'label': '예약', 'url': '/admin/rsvmng/rsvmng/' },
+                { 'type': 'free', 'label': '예약 날짜 뷰', 'url': '/admin/rsvmng/rsvmng/date_view/' },
+            ]
+        },
+        {
+            'type': 'app',
+            'name': 'goodsmng',
+            'label': '상품',
+            'models': (
+                {
+                    'name': 'goodsmng',
+                    'label': '상품'
+                },
+            )
+        },
+        { 'type': 'free', 'label': '매뉴얼', 'url': '/admin/package' },
+    ),
 }
 
 INSTALLED_APPS = [
@@ -46,25 +79,31 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    # 'grappelli.dashboard',
-    # 'grappelli',
     'django.contrib.sessions',
     'django.contrib.messages',
-
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    # 'grappelli.dashboard',
+    # 'grappelli',
+
     'rest_framework',
     'adminactions',
 
-    'baton.autodiscover',
-]
-
-INSTALLED_APPS += [
+    'hwmsuser.apps.UserConfig',
     'cstmng.apps.CstmngConfig',
     'goodsmng.apps.GoodsConfig',
     'rsvmng.apps.RsvmngConfig',
     'rangefilter',
+
+    'baton.autodiscover',
 ]
+
+# INSTALLED_APPS += [
+#     'cstmng.apps.CstmngConfig',
+#     'goodsmng.apps.GoodsConfig',
+#     'rsvmng.apps.RsvmngConfig',
+#     'rangefilter',
+# ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,9 +120,9 @@ ROOT_URLCONF = 'hwmsOffice.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS' : [],
-        # 'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        # 'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

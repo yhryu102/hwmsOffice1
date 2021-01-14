@@ -1,5 +1,5 @@
 from django.shortcuts import redirect
-from .models import CstModel
+from cstmng.models import CstModel
 
 from django.utils.decorators import method_decorator
 # from .models import Hwmsuser

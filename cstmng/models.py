@@ -6,30 +6,10 @@ from django.db import models
 
 class CstModel(models.Model):
     # user_sn = models.AutoField(primary_key=True)
-    user_sn = models.PositiveIntegerField(primary_key=True, verbose_name='사용자번호')
-    email = models.CharField(max_length=128, verbose_name='이메일')
-    password = models.CharField(max_length=128, blank=True, null=True, verbose_name='패스워드')
-    user_se = models.CharField(max_length=8, verbose_name='사용자구분',
-        choices=(
-            ('admin', 'admin'),
-            ('사용자', '사용자')
-        ))
-    frst_reg_dttm = models.DateTimeField(auto_now_add=True, verbose_name='등록날짜')
-
-    def __str__(self):
-        return self.email
-
-    class Meta:
-        db_table = 'cstmng'
-        verbose_name = '사용자'
-        verbose_name_plural = '사용자'
-
-
-'''   나중에 사용할 수 있을 듯 하여 남겨 놓음.   
-class Cstmng(models.Model):
-    chart_no = models.CharField(primary_key=True, max_length=10, verbose_name='차트번호')
-    # cst_nm = models.CharField(primary_key=True, max_length=60, verbose_name='고객명')
+    user_sn = models.PositiveIntegerField(primary_key=True, verbose_name='등록번호')
     cst_nm = models.CharField(max_length=60, verbose_name='고객명')
+    email = models.CharField(max_length=64, verbose_name='이메일')
+    chart_no = models.CharField(max_length=10, verbose_name='차트번호')
 
     COUNTRY_ID = (
         ('00', '미확인'),
@@ -64,16 +44,17 @@ class Cstmng(models.Model):
     adit_desc = models.TextField(verbose_name='고객정보 추가사항')
 
     VIP_ID = (
-        ('프리미엄', '프리미엄'),
-        ('VVIP', 'VVIP'),
+        ('일반', '일반'),
         ('VIP', 'VIP'),
+        ('VVIP', 'VVIP'),
+        ('프리미엄', '프리미엄')
     )
     vip_level = models.CharField(max_length=60, choices=VIP_ID, blank=True, null=True,
-                                 verbose_name='VIP등급')
+                                 verbose_name='VIP 등급')
 
     RBRANCH_ID = (
-        ('푸미흥점', '푸미흥점'),
-        ('2Q점', '2Q점'),
+        ('1Q', '1Q'),
+        ('7Q', '7Q'),
     )
     reg_baranch = models.CharField(max_length=60, choices=RBRANCH_ID, blank=True, null=True,
                                 verbose_name='초진사업장')
@@ -81,10 +62,9 @@ class Cstmng(models.Model):
     frst_reg_dttm = models.DateTimeField(auto_now_add=True, verbose_name='등록날짜')
 
     def __str__(self):
-        return 'Chart-no: %s Customer-name : %s' % (self.chart_no, self.cst_nm)
+        return 'USER-NO: %d Customer-name : %s' % (self.user_sn, self.cst_nm)
 
     class Meta:
         db_table = 'cstmng'
-        verbose_name = '고객관리'
-        verbose_name_plural = '고객관리'
-'''
+        verbose_name = '고객'
+        verbose_name_plural = '고객'

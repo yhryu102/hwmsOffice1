@@ -1,11 +1,10 @@
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormView
 from django.utils.decorators import method_decorator
 from rest_framework import generics
 from rest_framework import mixins
 #
-from cstmng.decorators import admin_required
+from hwmsuser.decorators import admin_required
 from .models import GoodsModel
 from .forms import RegisterForm
 from .serializers import GoodsSerializer
@@ -61,8 +60,7 @@ class GoodsCreate(FormView):
 class GoodsDetail(DetailView):
     template_name = 'goods_detail.html'
     queryset = GoodsModel.objects.all()
-    context_object_name = 'goodsmng'
-    # context_object_name = 'goods'
+    context_object_name = 'goods'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
