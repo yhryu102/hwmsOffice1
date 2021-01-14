@@ -35,9 +35,9 @@
       <tbody class="text-dark">
         {% for goodsmng in goods_list %}
         <tr>
-          <th scope="row">{{ goodsmng.goods_cd }}</th>
-          <th><a id="goodsmng-{{ goodsmng.goods_cd }}" onmouseenter="goods_detail({{ goodsmng.goods_cd }});"
-              onmouseleave="goods_leave({{ goodsmng.goods_cd }});" href="/goodsmng/{{ goodsmng.goods_cd }}">{{ goodsmng.goods_nm }}</a>
+          <th scope="row">{{ goodsmng.id }}</th>
+          <th><a id="goodsmng-{{ goodsmng.id }}" onmouseenter="goods_detail({{ goodsmng.id }});"
+              onmouseleave="goods_leave({{ goodsmng.id }});" href="/goodsmng/{{ goodsmng.id }}">{{ goodsmng.goods_nm }}</a>
           </th>
           <th>{{ goodsmng.goods_amt|intcomma }} 원</th>
           <th>{{ goodsmng.frst_reg_dttm|date:'Y-m-d H:i' }}</th>

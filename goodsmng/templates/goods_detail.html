@@ -9,8 +9,8 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          <form method="POST" action="/goodsmng/create/">
-{#            {% csrf_token %}#}
+          <form method="POST" action="/rsvmng/create/">
+            {% csrf_token %}
             {% for field in form %}
             <div class="form-group">
               {% ifnotequal field.name 'goodsmng' %}
@@ -18,7 +18,7 @@
               {% endifnotequal %}
               <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}"
                 placeholder="{{ field.label }}" name="{{ field.name }}"
-                value="{% ifequal field.name 'goodsmng' %}{{goodsmng.goods_cd}}{% endifequal %}" />
+                value="{% ifequal field.name 'goods_nm' %}{{goodsmng.goods_cd}}{% endifequal %}" />
             </div>
             {% if field.errors %}
             <span style="color: red">{{ field.errors }}</span>

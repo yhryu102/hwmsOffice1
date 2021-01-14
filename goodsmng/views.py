@@ -60,7 +60,7 @@ class GoodsCreate(FormView):
 class GoodsDetail(DetailView):
     template_name = 'goods_detail.html'
     queryset = GoodsModel.objects.all()
-    context_object_name = 'goods'
+    context_object_name = 'goods_nm'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

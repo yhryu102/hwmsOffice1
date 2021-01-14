@@ -23,7 +23,7 @@ from cstmng.views import CstList, CstCreate
 from django.conf import settings
 from django.conf.urls.static import static
 
-# from goodsmng.views import GoodsList, GoodsCreate, GoodsDetail
+from goodsmng.views import GoodsList, GoodsCreate, GoodsDetail
 from goodsmng.views import (
     GoodsList, GoodsCreate, GoodsDetail,
     GoodsListAPI, GoodsDetailAPI

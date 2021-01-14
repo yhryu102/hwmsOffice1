@@ -31,9 +31,9 @@ class Rsvmng(models.Model):
                                   verbose_name='예약시간')
     # rsv_time = models.CharField(max_length=5, verbose_name='예약시간')
 
-    goods_nm = models.CharField(max_length=100, verbose_name='고객희망시술내용')
+    # goods_nm = models.CharField(max_length=100, verbose_name='고객희망상품명')
+    goods_nm = models.ForeignKey('goodscdmng.GoodsModel', on_delete=models.SET_NULL, null=True, verbose_name='고객희망상품명')
     ds_class = models.CharField(max_length=60, verbose_name='대분류')
-    # goods_nm = models.ForeignKey('goodsmng.GoodsModel', on_delete=models.CASCADE, verbose_name='고객희망시술내용')
     CLNIC_ID = (
         ('초진', '초진'),
         ('재진', '재진'),

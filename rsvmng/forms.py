@@ -10,11 +10,30 @@ class RegisterForm(forms.Form):
         super().__init__(*args, **kwargs)
         self.request = request
 
-    # rsv_sn = forms.DateField(
-    #     error_messages={
-    #         'required': '예약일을 입력해주세요.'
-    #     }, label='예약일'
-    # )
+    # 예약번호는 자동생성됨.
+    rsv_sn = forms.IntegerField(
+        error_messages={
+            'required': '예약번호을 입력해주세요.'
+        }, label='예약번호', widget=forms.HiddenInput
+    )
+
+    # 여기서의 user_sn은 고객등록번호임(사용자와 혼동하지 말것).
+    # foreign key 고객등록번호는 사용자에게 보이지 않음.
+    user_sn = form.IntegerField(
+        error_messages={
+            'required': '고객번호를 입력해주세요.'
+        }, label='고객번호', widget=forms.HiddenInput
+    )
+    cst_nm = form.CharField(
+        error_messages={
+            'required': '고객명을 입력해주세요.'
+        }, label='고객명'
+    )
+    chart_no = form.CharField(
+        error_messages={
+            'required': '차트번호를 입력해주세요.'
+        }, label='차트번호'
+    )
     rsv_dt = forms.DateField(
         error_messages={
             'required': '예약일을 입력해주세요.'
@@ -22,30 +41,32 @@ class RegisterForm(forms.Form):
     )
     rsv_time = forms.CharField(
         error_messages={
-            'required': '시간을 입력해주세요.'
-        }, label='시간'
-    )
-    goods_nm = forms.CharField(
-        error_messages={
-            'required': '고객희망 시술내용을 입력해주세요.'
-        }, label='희망시술'
-    )
-    ds_class = forms.CharField(
-        error_messages={
-            'required': '고객희망 대분류를 입력해주세요.'
-        }, label='대분류명'
+            'required': '예약시간을 입력해주세요.'
+        }, label='예약시간'
     )
 
-    # quantity = forms.IntegerField(
-    #     error_messages={
-    #         'required': '수량을 입력해주세요.'
-    #     }, label='수량'
-    # )
-    # product = forms.IntegerField(
-    #     error_messages={
-    #         'required': '상품설명을 입력해주세요.'
-    #     }, label='상품설명', widget=forms.HiddenInput
-    # )
+    # foreign key 제품명은 앞의 폼에서 가져옴으로 입력받지 않음.
+    good_nm = form.CharField(
+        error_messages={
+            'required': '고객희망 상품명을 선택해주세요.'
+        }, label='고객희망 상품명'
+    )
+
+    ds_class = forms.CharField(
+        error_messages={
+            'required': '고객희망 상품대분류를 입력해주세요.'
+        }, label='대분류명'
+    )
+    clnic_cd = forms.CharField(
+        error_messages={
+            'required': '초/재진 구분을 입력해주세요.'
+        }, label='초/재진 구분'
+    )
+    rsv_stt_cd = forms.CharField(
+        error_messages={
+            'required': '고객 현재상태를 선택해주세요.'
+        }, label='현재상태'
+    )
 
     def clean(self):
         cleaned_data = super().clean()
